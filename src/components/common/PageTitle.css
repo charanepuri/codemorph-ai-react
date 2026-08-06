@@ -1,0 +1,13 @@
+.page-title {
+  margin-bottom: 32px;
+}
+
+.page-title h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.page-title p {
+  margin-top: 8px;
+  color: var(--text-secondary);
+}

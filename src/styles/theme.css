@@ -1,0 +1,25 @@
+[data-theme="dark"] {
+
+  --bg: #0f1117;
+  --surface: #171b22;
+  --surface-hover: #1f2530;
+
+  --text: #f8fafc;
+  --text-secondary: #9ca3af;
+
+  --border: #2b3442;
+
+}
+
+[data-theme="light"] {
+
+  --bg: #f7f8fc;
+  --surface: #ffffff;
+  --surface-hover: #edf1f8;
+
+  --text: #111827;
+  --text-secondary: #6b7280;
+
+  --border: #d9dee8;
+
+}

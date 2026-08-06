@@ -1,0 +1,17 @@
+.settings-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:24px;
+}
+
+.setting-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:24px;
+}
+
+.setting-placeholder{
+    margin-top:20px;
+    color:var(--text-secondary);
+}

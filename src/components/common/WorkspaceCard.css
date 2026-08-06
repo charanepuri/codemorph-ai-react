@@ -1,0 +1,17 @@
+.workspace-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+.workspace-card h2{
+
+    margin:0;
+
+    font-size:1.25rem;
+
+}
