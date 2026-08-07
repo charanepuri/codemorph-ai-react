@@ -1,8 +1,9 @@
 import {
+  FaBolt,
   FaCopy,
-  FaTrash,
   FaDownload,
   FaExchangeAlt,
+  FaTrash,
 } from "react-icons/fa";
 
 import ToolbarButton from "./ToolbarButton";
@@ -10,6 +11,8 @@ import ToolbarButton from "./ToolbarButton";
 import "./EditorToolbar.css";
 
 function EditorToolbar({
+  loading = false,
+  onConvert,
   onCopy,
   onClear,
   onDownload,
@@ -18,27 +21,38 @@ function EditorToolbar({
   return (
     <div className="editor-toolbar">
       <ToolbarButton
-        icon={<FaCopy />}
-        text="Copy"
-        onClick={onCopy}
+        icon={<FaBolt />}
+        text={loading ? "Converting..." : "Convert"}
+        onClick={onConvert}
+        disabled={loading}
       />
 
       <ToolbarButton
-        icon={<FaTrash />}
-        text="Clear"
-        onClick={onClear}
+        icon={<FaCopy />}
+        text="Copy"
+        onClick={onCopy}
+        disabled={loading}
       />
 
       <ToolbarButton
         icon={<FaDownload />}
         text="Download"
         onClick={onDownload}
+        disabled={loading}
       />
 
       <ToolbarButton
         icon={<FaExchangeAlt />}
         text="Swap"
         onClick={onSwap}
+        disabled={loading}
+      />
+
+      <ToolbarButton
+        icon={<FaTrash />}
+        text="Clear"
+        onClick={onClear}
+        disabled={loading}
       />
     </div>
   );

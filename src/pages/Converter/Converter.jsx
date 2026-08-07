@@ -16,6 +16,8 @@ import languages from "../../data/languages";
 import { copyToClipboard } from "../../utils/copy";
 import { downloadCode } from "../../utils/download";
 
+import useGemini from "../../hooks/useGemini";
+
 function Converter() {
   const [sourceLanguage, setSourceLanguage] = useState("javascript");
   const [targetLanguage, setTargetLanguage] = useState("python");
@@ -25,6 +27,8 @@ function Converter() {
 }`);
 
   const [outputCode, setOutputCode] = useState("");
+
+  const { loading, convertCode } = useGemini();
 
   const extension = useMemo(() => {
     const language = languages.find(
@@ -41,6 +45,27 @@ function Converter() {
   const outputLines = outputCode
     ? outputCode.split("\n").length
     : 0;
+
+  const handleConvert = async () => {
+    if (!sourceCode.trim()) {
+      toast.error("Please enter source code.");
+      return;
+    }
+
+    try {
+      const convertedCode = await convertCode({
+        sourceLanguage,
+        targetLanguage,
+        code: sourceCode,
+      });
+
+      setOutputCode(convertedCode);
+
+      toast.success("Code converted successfully.");
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
   const handleCopy = async () => {
     if (!outputCode.trim()) {
@@ -98,7 +123,7 @@ function Converter() {
     <>
       <PageHeader
         title="AI Code Converter"
-        description="Convert code between programming languages using artificial intelligence."
+        description="Convert code between programming languages using Gemini AI."
       />
 
       <div className="converter-header">
@@ -114,6 +139,8 @@ function Converter() {
       </div>
 
       <EditorToolbar
+        loading={loading}
+        onConvert={handleConvert}
         onCopy={handleCopy}
         onClear={handleClear}
         onDownload={handleDownload}
