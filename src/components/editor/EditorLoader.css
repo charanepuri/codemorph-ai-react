@@ -1,0 +1,47 @@
+.editor-loader{
+    height:500px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:18px;
+
+    background:var(--surface);
+}
+
+.editor-loader-spinner{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    border:4px solid var(--border);
+
+    border-top-color:var(--color-primary);
+
+    animation:spin .8s linear infinite;
+
+}
+
+.editor-loader p{
+
+    color:var(--text-secondary);
+
+}
+
+@keyframes spin{
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
