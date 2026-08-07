@@ -1,33 +1,64 @@
-import { FaHistory } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
 import PageHeader from "../../components/common/PageHeader";
 import Card from "../../components/common/Card";
 import Button from "../../components/common/Button";
 
+import {
+  clearHistory,
+  getHistory,
+} from "../../utils/history";
+
 import "./History.css";
 
 function History() {
+  const [history, setHistory] = useState([]);
+
+  useEffect(() => {
+    setHistory(getHistory());
+  }, []);
+
+  function handleClear() {
+    clearHistory();
+
+    setHistory([]);
+  }
+
   return (
     <>
       <PageHeader
         title="Conversion History"
-        description="View your recent AI conversions and quickly reopen previous work."
+        description="Recently converted code."
       />
 
-      <Card>
-        <div className="history-empty">
-          <FaHistory />
+      {history.length > 0 && (
+        <Button onClick={handleClear}>
+          Clear History
+        </Button>
+      )}
 
-          <h2>No History Available</h2>
+      <div className="history-list">
+        {history.length === 0 ? (
+          <Card>
+            <h3>No history found.</h3>
+          </Card>
+        ) : (
+          history.map((item) => (
+            <Card key={item.id}>
+              <h3>
+                {item.sourceLanguage} →{" "}
+                {item.targetLanguage}
+              </h3>
 
-          <p>
-            Your previous conversions will appear here once you start using
-            CodeMorph AI.
-          </p>
-
-          <Button>Start Converting</Button>
-        </div>
-      </Card>
+              <p>
+                {new Date(
+                  item.createdAt
+                ).toLocaleString()}
+              </p>
+            </Card>
+          ))
+        )}
+      </div>
     </>
   );
 }

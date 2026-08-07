@@ -11,12 +11,14 @@ import ToolbarButton from "./ToolbarButton";
 import "./EditorToolbar.css";
 
 function EditorToolbar({
-  loading = false,
+  loading,
   onConvert,
   onCopy,
   onClear,
   onDownload,
   onSwap,
+  disableCopy = false,
+  disableDownload = false,
 }) {
   return (
     <div className="editor-toolbar">
@@ -31,14 +33,14 @@ function EditorToolbar({
         icon={<FaCopy />}
         text="Copy"
         onClick={onCopy}
-        disabled={loading}
+        disabled={loading || disableCopy}
       />
 
       <ToolbarButton
         icon={<FaDownload />}
         text="Download"
         onClick={onDownload}
-        disabled={loading}
+        disabled={loading || disableDownload}
       />
 
       <ToolbarButton
