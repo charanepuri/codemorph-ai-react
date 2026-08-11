@@ -270,3 +270,111 @@ Code:
 
 ${code}
 `.trim();
+
+
+
+/**
+ * ==========================================================
+ * Code Optimization Prompt
+ * ==========================================================
+ */
+
+export const buildCodeOptimizationPrompt = ({
+  language,
+  code,
+}) => `
+You are a senior software engineer specializing in
+performance optimization, clean code, and ${language} best
+practices.
+
+Analyze and optimize the following ${language} code.
+
+Your primary objective is to improve the code while preserving
+its original functionality and expected behavior.
+
+Optimization areas:
+
+1. Performance
+   - Reduce unnecessary operations.
+   - Avoid redundant calculations.
+   - Improve inefficient algorithms when possible.
+   - Identify potential performance bottlenecks.
+
+2. Readability
+   - Improve variable and function naming.
+   - Simplify unnecessarily complicated logic.
+   - Improve code organization.
+   - Remove unnecessary complexity.
+
+3. Maintainability
+   - Apply clean-code principles.
+   - Reduce duplication.
+   - Improve structure where appropriate.
+   - Make the code easier to modify and understand.
+
+4. Language Best Practices
+   - Follow modern ${language} conventions.
+   - Use appropriate language features.
+   - Avoid deprecated or unnecessarily complex approaches.
+
+5. Safety
+   - Do not introduce security vulnerabilities.
+   - Do not remove necessary validation.
+   - Preserve important error handling.
+
+6. Functionality
+   - Preserve the original behavior.
+   - Do not remove required functionality.
+   - Do not change expected inputs or outputs unless
+     absolutely necessary for the optimization.
+
+Return your response using EXACTLY the following structure:
+
+# Optimized Code
+
+Return ONLY the complete optimized ${language} source code
+inside this section.
+
+Do not use triple backticks inside this section.
+
+# Performance Improvements
+
+Explain the specific performance improvements made.
+
+# Readability Improvements
+
+Explain how the code became easier to understand.
+
+# Maintainability Improvements
+
+Explain structural and maintainability improvements.
+
+# Best Practices
+
+List the ${language} best practices applied.
+
+# Potential Issues
+
+Mention any remaining limitations, trade-offs, or areas that
+could not be safely optimized.
+
+IMPORTANT:
+
+- Do not invent functionality.
+- Do not change the intended behavior.
+- Do not omit important parts of the original code.
+- Base the analysis strictly on the provided code.
+- If the code is already well optimized, say so instead of
+  making unnecessary changes.
+- If no meaningful optimization is possible, return the
+  original code and explain why.
+- Keep explanations specific to the provided code.
+- Do not include unrelated information.
+
+Programming Language:
+${language}
+
+Original Code:
+
+${code}
+`.trim();

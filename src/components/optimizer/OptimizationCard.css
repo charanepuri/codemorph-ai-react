@@ -1,0 +1,103 @@
+.optimization-card {
+  min-width: 0;
+
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-md);
+
+  background: var(--background);
+}
+
+.optimization-card-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 16px 18px;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.optimization-card-icon {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 34px;
+
+  height: 34px;
+
+  border-radius: 8px;
+
+  background: var(--surface-hover);
+
+  color: var(--color-primary);
+}
+
+.optimization-card-header h3 {
+  margin: 0;
+
+  font-size: 0.98rem;
+
+  line-height: 1.4;
+}
+
+.optimization-card-body {
+  padding: 18px;
+}
+
+.optimization-card-body .markdown-renderer {
+  font-size: 0.9rem;
+}
+
+.optimization-card-body .markdown-heading {
+  margin-top: 18px;
+
+  font-size: 1rem;
+}
+
+.optimization-card-body .markdown-heading:first-child {
+  margin-top: 0;
+}
+
+.optimization-card-body .markdown-paragraph {
+  margin-bottom: 12px;
+}
+
+.optimization-card-empty {
+  margin: 0;
+
+  color: var(--text-secondary);
+
+  font-size: 0.88rem;
+
+  line-height: 1.6;
+}
+
+.optimization-card-success
+  .optimization-card-icon {
+  color: var(--color-primary);
+}
+
+.optimization-card-warning
+  .optimization-card-icon {
+  color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .optimization-card-header {
+    padding: 14px 16px;
+  }
+
+  .optimization-card-body {
+    padding: 16px;
+  }
+}

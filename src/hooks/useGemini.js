@@ -5,6 +5,7 @@ import geminiService from "../services/gemini";
 import {
   buildCodeConversionPrompt,
   buildCodeExplanationPrompt,
+  buildCodeOptimizationPrompt,
 } from "../services/prompts";
 
 function useGemini() {
@@ -90,6 +91,22 @@ function useGemini() {
     return generate(prompt);
   }
 
+  /**
+   * Optimize source code
+   */
+  async function optimizeCode({
+    language,
+    code,
+  }) {
+    const prompt =
+      buildCodeOptimizationPrompt({
+        language,
+        code,
+      });
+
+    return generate(prompt);
+  }
+
   return {
     loading,
     error,
@@ -102,6 +119,8 @@ function useGemini() {
     convertCode,
 
     explainCode,
+
+    optimizeCode,
   };
 }
 
