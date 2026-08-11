@@ -1,0 +1,87 @@
+.explanation-card {
+  width: 100%;
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-lg);
+
+  background: var(--surface);
+
+  box-shadow: var(--shadow-sm);
+
+  overflow: hidden;
+
+  transition: var(--transition);
+}
+
+.explanation-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.explanation-card-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 20px 24px;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.explanation-card-icon {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 42px;
+
+  height: 42px;
+
+  border-radius: var(--radius-md);
+
+  background: var(--surface-hover);
+
+  color: var(--color-primary);
+
+  font-size: 1.1rem;
+}
+
+.explanation-card-header h3 {
+  margin: 0;
+
+  font-size: 1.1rem;
+
+  font-weight: 700;
+
+  color: var(--text);
+}
+
+.explanation-card-header p {
+  margin: 5px 0 0;
+
+  color: var(--text-secondary);
+
+  font-size: 0.88rem;
+
+  line-height: 1.5;
+}
+
+.explanation-card-body {
+  padding: 24px;
+}
+
+@media (max-width: 768px) {
+  .explanation-card-header {
+    padding: 16px 18px;
+  }
+
+  .explanation-card-body {
+    padding: 18px;
+  }
+}

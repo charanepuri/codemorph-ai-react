@@ -1,0 +1,127 @@
+.explanation-tabs {
+  margin-top: 24px;
+
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-lg);
+
+  background: var(--surface);
+}
+
+.explanation-tabs-header {
+  overflow-x: auto;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.explanation-tabs-list {
+  display: flex;
+
+  min-width: max-content;
+
+  gap: 4px;
+
+  padding: 8px;
+}
+
+.explanation-tab {
+  position: relative;
+
+  padding: 12px 18px;
+
+  border: 0;
+
+  border-radius: var(--radius-md);
+
+  background: transparent;
+
+  color: var(--text-secondary);
+
+  font: inherit;
+
+  font-size: 0.9rem;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition: var(--transition);
+}
+
+.explanation-tab:hover {
+  background: var(--surface-hover);
+
+  color: var(--text);
+}
+
+.explanation-tab.active {
+  background: var(--surface-hover);
+
+  color: var(--color-primary);
+}
+
+.explanation-tab.active::after {
+  content: "";
+
+  position: absolute;
+
+  right: 16px;
+
+  bottom: -9px;
+
+  left: 16px;
+
+  height: 2px;
+
+  border-radius: 2px;
+
+  background: var(--color-primary);
+}
+
+.explanation-tab.unavailable {
+  opacity: 0.65;
+}
+
+.explanation-tab-content {
+  min-height: 240px;
+
+  padding: 28px;
+}
+
+.explanation-section-empty {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 200px;
+
+  color: var(--text-secondary);
+
+  text-align: center;
+}
+
+.explanation-section-empty p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .explanation-tabs-list {
+    padding: 6px;
+  }
+
+  .explanation-tab {
+    padding: 10px 14px;
+
+    font-size: 0.82rem;
+  }
+
+  .explanation-tab-content {
+    padding: 20px;
+  }
+}

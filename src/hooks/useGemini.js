@@ -4,6 +4,7 @@ import geminiService from "../services/gemini";
 
 import {
   buildCodeConversionPrompt,
+  buildCodeExplanationPrompt,
 } from "../services/prompts";
 
 function useGemini() {
@@ -14,7 +15,7 @@ function useGemini() {
   const [response, setResponse] = useState("");
 
   /**
-   * Reset Hook State
+   * Reset AI state
    */
   function reset() {
     setLoading(false);
@@ -23,9 +24,17 @@ function useGemini() {
   }
 
   /**
-   * Generic AI Request
+   * Generic AI request
    */
   async function generate(prompt) {
+    if (!prompt?.trim()) {
+      const message = "AI prompt cannot be empty.";
+
+      setError(message);
+
+      throw new Error(message);
+    }
+
     try {
       setLoading(true);
       setError("");
@@ -38,30 +47,45 @@ function useGemini() {
       return result;
     } catch (err) {
       const message =
-        err.message || "Unknown error";
+        err?.message ||
+        "Something went wrong while communicating with Gemini AI.";
 
       setError(message);
 
-      throw err;
+      throw new Error(message);
     } finally {
       setLoading(false);
     }
   }
 
   /**
-   * Convert Source Code
+   * Convert source code
    */
   async function convertCode({
     sourceLanguage,
     targetLanguage,
     code,
   }) {
-    const prompt =
-      buildCodeConversionPrompt({
-        sourceLanguage,
-        targetLanguage,
-        code,
-      });
+    const prompt = buildCodeConversionPrompt({
+      sourceLanguage,
+      targetLanguage,
+      code,
+    });
+
+    return generate(prompt);
+  }
+
+  /**
+   * Explain source code
+   */
+  async function explainCode({
+    language,
+    code,
+  }) {
+    const prompt = buildCodeExplanationPrompt({
+      language,
+      code,
+    });
 
     return generate(prompt);
   }
@@ -76,6 +100,8 @@ function useGemini() {
     generate,
 
     convertCode,
+
+    explainCode,
   };
 }
 

@@ -1,0 +1,107 @@
+.explain-page {
+  width: 100%;
+}
+
+.explain-controls {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 16px;
+
+  margin-bottom: 24px;
+}
+
+.explain-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  min-height: 44px;
+
+  padding: 0 20px;
+
+  border: 1px solid var(--color-primary);
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-primary);
+
+  color: #fff;
+
+  font: inherit;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: var(--transition);
+}
+
+.explain-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+
+  box-shadow: var(--shadow-md);
+}
+
+.explain-button:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+.explain-editor {
+  margin-bottom: 28px;
+
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-lg);
+
+  background: var(--surface);
+
+  box-shadow: var(--shadow-sm);
+}
+
+.explain-editor-header {
+  padding: 20px 24px;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.explain-editor-header h2 {
+  margin: 0;
+
+  font-size: 1.15rem;
+}
+
+.explain-editor-header p {
+  margin: 6px 0 0;
+
+  color: var(--text-secondary);
+
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .explain-controls {
+    align-items: stretch;
+
+    flex-direction: column;
+  }
+
+  .explain-button {
+    width: 100%;
+  }
+
+  .explain-editor-header {
+    padding: 16px 18px;
+  }
+}

@@ -1,0 +1,82 @@
+.markdown-renderer {
+  color: var(--text);
+  line-height: 1.8;
+}
+
+.markdown-title {
+  margin: 0 0 24px;
+  font-size: 1.8rem;
+}
+
+.markdown-heading {
+  margin: 32px 0 14px;
+  font-size: 1.4rem;
+}
+
+.markdown-subheading {
+  margin: 24px 0 12px;
+  font-size: 1.15rem;
+}
+
+.markdown-paragraph {
+  margin: 0 0 16px;
+  color: var(--text-secondary);
+}
+
+.markdown-list {
+  margin: 0 0 20px;
+  padding-left: 24px;
+  color: var(--text-secondary);
+}
+
+.markdown-list li {
+  margin-bottom: 8px;
+}
+
+.markdown-inline-code {
+  padding: 3px 7px;
+  border-radius: 5px;
+  background: var(--surface-hover);
+  color: var(--color-primary);
+  font-family: "Fira Code", Consolas, monospace;
+  font-size: 0.9em;
+}
+
+.markdown-code-block {
+  overflow-x: auto;
+  margin: 20px 0;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--background);
+}
+
+.markdown-code-block code {
+  font-family: "Fira Code", Consolas, monospace;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  white-space: pre;
+}
+
+.markdown-blockquote {
+  margin: 20px 0;
+  padding: 14px 18px;
+  border-left: 4px solid var(--color-primary);
+  background: var(--surface);
+  color: var(--text-secondary);
+}
+
+.markdown-divider {
+  margin: 28px 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
+.markdown-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: var(--text-secondary);
+  text-align: center;
+}
