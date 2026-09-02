@@ -6,9 +6,6 @@ import {
   FaLightbulb,
   FaBolt,
   FaBug,
-  FaFileAlt,
-  FaChartLine,
-  FaHistory,
   FaCog,
   FaInfoCircle,
 } from "react-icons/fa";
@@ -37,8 +34,8 @@ const navigation = [
     icon: FaBolt,
   },
   {
-    title: "Bug Finder",
-    path: "/bug-finder",
+    title: "Bug Detector",
+    path: "/bug-detector",
     icon: FaBug,
   },
   {
@@ -56,18 +53,19 @@ const navigation = [
 function Sidebar({ sidebarOpen, closeSidebar }) {
   return (
     <>
-      {/* Mobile Overlay */}
       <div
         className={`sidebar-overlay ${
           sidebarOpen ? "show-overlay" : ""
         }`}
         onClick={closeSidebar}
+        aria-hidden={!sidebarOpen}
       />
 
       <aside
         className={`sidebar ${
           sidebarOpen ? "sidebar-open" : ""
         }`}
+        aria-label="Main navigation"
       >
         <div className="sidebar-header">
           <h3>Navigation</h3>
@@ -89,7 +87,10 @@ function Sidebar({ sidebarOpen, closeSidebar }) {
                     : "sidebar-link"
                 }
               >
-                <Icon className="sidebar-icon" />
+                <Icon
+                  className="sidebar-icon"
+                  aria-hidden="true"
+                />
 
                 <span>{item.title}</span>
               </NavLink>

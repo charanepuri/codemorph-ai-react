@@ -10,14 +10,9 @@ import {
 } from "../services/prompts";
 
 function useGemini() {
-  const [loading, setLoading] =
-    useState(false);
-
-  const [error, setError] =
-    useState("");
-
-  const [response, setResponse] =
-    useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [response, setResponse] = useState("");
 
   function reset() {
     setLoading(false);
@@ -27,11 +22,9 @@ function useGemini() {
 
   async function generate(prompt) {
     if (!prompt?.trim()) {
-      const message =
-        "AI prompt cannot be empty.";
+      const message = "AI prompt cannot be empty.";
 
       setError(message);
-
       throw new Error(message);
     }
 
@@ -39,8 +32,7 @@ function useGemini() {
       setLoading(true);
       setError("");
 
-      const result =
-        await geminiService.generate(prompt);
+      const result = await geminiService.generate(prompt);
 
       setResponse(result);
 
@@ -63,70 +55,51 @@ function useGemini() {
     targetLanguage,
     code,
   }) {
-    const prompt =
+    return generate(
       buildCodeConversionPrompt({
         sourceLanguage,
         targetLanguage,
         code,
-      });
-
-    return generate(prompt);
+      })
+    );
   }
 
-  async function explainCode({
-    language,
-    code,
-  }) {
-    const prompt =
+  async function explainCode({ language, code }) {
+    return generate(
       buildCodeExplanationPrompt({
         language,
         code,
-      });
-
-    return generate(prompt);
+      })
+    );
   }
 
-  async function optimizeCode({
-    language,
-    code,
-  }) {
-    const prompt =
+  async function optimizeCode({ language, code }) {
+    return generate(
       buildCodeOptimizationPrompt({
         language,
         code,
-      });
-
-    return generate(prompt);
+      })
+    );
   }
 
-  async function detectBugs({
-    language,
-    code,
-  }) {
-    const prompt =
+  async function detectBugs({ language, code }) {
+    return generate(
       buildBugDetectionPrompt({
         language,
         code,
-      });
-
-    return generate(prompt);
+      })
+    );
   }
 
   return {
     loading,
     error,
     response,
-
     reset,
-
     generate,
-
     convertCode,
-
     explainCode,
-
     optimizeCode,
-
     detectBugs,
   };
 }

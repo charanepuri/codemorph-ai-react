@@ -19,13 +19,33 @@ import useGemini from "../../hooks/useGemini";
 
 import { copyToClipboard } from "../../utils/copy";
 import { downloadCode } from "../../utils/download";
-import { calculateCodeStats } from "../../utils/codeStats";
 import {
   validateConversion,
   getDownloadFileName,
-  getConversionTime,
 } from "../../utils/converter";
-import { addHistory } from "../../utils/history";
+
+function calculateStats(code = "", language = "") {
+  const normalized = code.replace(/\r\n/g, "\n");
+
+  const lines =
+    normalized.trim().length === 0
+      ? 0
+      : normalized.split("\n").length;
+
+  const characters = normalized.length;
+
+  const words =
+    normalized.trim().length === 0
+      ? 0
+      : normalized.trim().split(/\s+/).length;
+
+  return {
+    language,
+    lines,
+    characters,
+    words,
+  };
+}
 
 function Converter() {
   const [sourceLanguage, setSourceLanguage] =
@@ -40,17 +60,14 @@ function Converter() {
 
   const [outputCode, setOutputCode] = useState("");
 
-  const [lastConverted, setLastConverted] =
-    useState("");
-
   const { loading, convertCode } = useGemini();
 
-  const sourceStats = calculateCodeStats(
+  const sourceStats = calculateStats(
     sourceCode,
     sourceLanguage
   );
 
-  const outputStats = calculateCodeStats(
+  const outputStats = calculateStats(
     outputCode,
     targetLanguage
   );
@@ -75,17 +92,6 @@ function Converter() {
       });
 
       setOutputCode(convertedCode);
-
-      addHistory({
-        id: crypto.randomUUID(),
-        sourceLanguage,
-        targetLanguage,
-        sourceCode,
-        outputCode: convertedCode,
-        createdAt: new Date().toISOString(),
-      });
-
-      setLastConverted(getConversionTime());
 
       toast.success("Code converted successfully.");
     } catch (error) {
@@ -226,13 +232,6 @@ function Converter() {
         sourceCode={sourceCode}
         outputCode={outputCode}
       />
-
-      {lastConverted && (
-        <div className="conversion-info">
-          <strong>Last Conversion:</strong>{" "}
-          {lastConverted}
-        </div>
-      )}
     </>
   );
 }

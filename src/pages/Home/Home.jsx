@@ -3,8 +3,6 @@ import {
   FaLightbulb,
   FaBolt,
   FaBug,
-  FaFileAlt,
-  FaChartLine,
   FaArrowRight,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -29,27 +27,15 @@ const features = [
   },
   {
     icon: <FaBolt />,
-    title: "Optimization",
+    title: "Code Optimization",
     description:
-      "Improve readability, performance, and follow modern coding practices.",
+      "Improve readability, performance, maintainability, and coding practices.",
   },
   {
     icon: <FaBug />,
     title: "Bug Detection",
     description:
-      "Identify syntax, logic, and potential runtime issues before deployment.",
-  },
-  {
-    icon: <FaFileAlt />,
-    title: "Documentation",
-    description:
-      "Generate README files, comments, and technical documentation instantly.",
-  },
-  {
-    icon: <FaChartLine />,
-    title: "Complexity Analysis",
-    description:
-      "Analyze time and space complexity with optimization suggestions.",
+      "Identify syntax, logic, runtime, type, security, and performance issues.",
   },
 ];
 
@@ -60,14 +46,14 @@ function Home() {
         <span className="hero-badge">🚀 AI Powered Developer Platform</span>
 
         <h1>
-          Translate, Explain & Optimize Code
+          Transform, Understand & Improve Code
           <span> with Artificial Intelligence</span>
         </h1>
 
         <p>
           CodeMorph AI helps developers convert code between languages,
-          understand unfamiliar codebases, optimize performance, detect bugs,
-          and generate documentation—all from one modern workspace.
+          understand unfamiliar code, optimize existing code, and detect
+          potential bugs from one modern workspace.
         </p>
 
         <div className="hero-actions">
@@ -93,7 +79,7 @@ function Home() {
         </Card>
 
         <Card>
-          <h2>6</h2>
+          <h2>4</h2>
           <p>AI Developer Tools</p>
         </Card>
 
@@ -110,11 +96,11 @@ function Home() {
 
       <section className="features">
         <div className="section-header">
-          <h2>Everything Developers Need</h2>
+          <h2>AI Tools for Developers</h2>
 
           <p>
-            One platform for code translation, understanding, optimization,
-            debugging, documentation, and analysis.
+            One platform for code conversion, explanation, optimization, and
+            bug detection.
           </p>
         </div>
 

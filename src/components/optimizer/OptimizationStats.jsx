@@ -4,42 +4,48 @@ import {
   FaCode,
 } from "react-icons/fa";
 
-import { calculateCodeStats } from "../../utils/codeStats";
-
 import "./OptimizationStats.css";
+
+function calculateStats(code = "") {
+  const normalized = code.replace(/\r\n/g, "\n");
+
+  const lines =
+    normalized.trim().length === 0
+      ? 0
+      : normalized.split("\n").length;
+
+  const characters = normalized.length;
+
+  const words =
+    normalized.trim().length === 0
+      ? 0
+      : normalized.trim().split(/\s+/).length;
+
+  return {
+    lines,
+    characters,
+    words,
+  };
+}
 
 function OptimizationStats({
   sourceCode = "",
   optimizedCode = "",
-  language = "",
 }) {
-  const sourceStats =
-    calculateCodeStats(
-      sourceCode,
-      language
-    );
-
-  const optimizedStats =
-    calculateCodeStats(
-      optimizedCode,
-      language
-    );
+  const sourceStats = calculateStats(sourceCode);
+  const optimizedStats = calculateStats(optimizedCode);
 
   const lineDifference =
-    sourceStats.lines -
-    optimizedStats.lines;
+    sourceStats.lines - optimizedStats.lines;
 
   const characterDifference =
     sourceStats.characters -
     optimizedStats.characters;
 
   const wordDifference =
-    sourceStats.words -
-    optimizedStats.words;
+    sourceStats.words - optimizedStats.words;
 
-  const getDifferenceClass = (
-    difference
-  ) => {
+  function getDifferenceClass(difference) {
     if (difference > 0) {
       return "positive";
     }
@@ -49,7 +55,7 @@ function OptimizationStats({
     }
 
     return "neutral";
-  };
+  }
 
   return (
     <section className="optimization-stats">
@@ -71,44 +77,31 @@ function OptimizationStats({
       <div className="optimization-stats-table">
         <div className="optimization-stats-row optimization-stats-heading">
           <span>Metric</span>
-
           <span>Original</span>
-
           <span>Optimized</span>
-
           <span>Difference</span>
         </div>
 
         <div className="optimization-stats-row">
           <span>Lines</span>
 
-          <strong>
-            {sourceStats.lines}
-          </strong>
+          <strong>{sourceStats.lines}</strong>
 
-          <strong>
-            {optimizedStats.lines}
-          </strong>
+          <strong>{optimizedStats.lines}</strong>
 
           <span
             className={getDifferenceClass(
               lineDifference
             )}
           >
-            {lineDifference > 0 && (
-              <FaArrowDown />
-            )}
+            {lineDifference > 0 && <FaArrowDown />}
 
-            {lineDifference < 0 && (
-              <FaArrowUp />
-            )}
+            {lineDifference < 0 && <FaArrowUp />}
 
             {lineDifference > 0
               ? `${lineDifference} fewer`
               : lineDifference < 0
-              ? `${Math.abs(
-                  lineDifference
-                )} more`
+              ? `${Math.abs(lineDifference)} more`
               : "No change"}
           </span>
         </div>
@@ -116,13 +109,9 @@ function OptimizationStats({
         <div className="optimization-stats-row">
           <span>Characters</span>
 
-          <strong>
-            {sourceStats.characters}
-          </strong>
+          <strong>{sourceStats.characters}</strong>
 
-          <strong>
-            {optimizedStats.characters}
-          </strong>
+          <strong>{optimizedStats.characters}</strong>
 
           <span
             className={getDifferenceClass(
@@ -132,9 +121,7 @@ function OptimizationStats({
             {characterDifference > 0
               ? `${characterDifference} fewer`
               : characterDifference < 0
-              ? `${Math.abs(
-                  characterDifference
-                )} more`
+              ? `${Math.abs(characterDifference)} more`
               : "No change"}
           </span>
         </div>
@@ -142,13 +129,9 @@ function OptimizationStats({
         <div className="optimization-stats-row">
           <span>Words</span>
 
-          <strong>
-            {sourceStats.words}
-          </strong>
+          <strong>{sourceStats.words}</strong>
 
-          <strong>
-            {optimizedStats.words}
-          </strong>
+          <strong>{optimizedStats.words}</strong>
 
           <span
             className={getDifferenceClass(
@@ -158,9 +141,7 @@ function OptimizationStats({
             {wordDifference > 0
               ? `${wordDifference} fewer`
               : wordDifference < 0
-              ? `${Math.abs(
-                  wordDifference
-                )} more`
+              ? `${Math.abs(wordDifference)} more`
               : "No change"}
           </span>
         </div>

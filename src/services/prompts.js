@@ -1,6 +1,7 @@
 /**
  * ==========================================================
- * CodeMorph AI - Prompt Service
+ * CodeMorph AI
+ * AI Prompt Service
  * ==========================================================
  */
 
@@ -23,7 +24,7 @@ Requirements:
 3. Produce clean, readable, production-ready code.
 4. Do not change the intended behavior.
 5. Do not explain the code.
-6. Do not include markdown.
+6. Do not include Markdown.
 7. Do not wrap the response in triple backticks.
 8. Return ONLY the converted source code.
 
@@ -36,7 +37,6 @@ ${targetLanguage}
 Source Code:
 ${code}
 `.trim();
-
 
 /**
  * Code Explanation Prompt
@@ -132,153 +132,12 @@ Programming Language:
 ${language}
 
 Code:
-
 ${code}
 `.trim();
-
 
 /**
  * Code Optimization Prompt
  */
-export const buildOptimizationPrompt = ({
-  language,
-  code,
-}) => `
-You are a senior software engineer.
-
-Optimize the following ${language} code.
-
-Requirements:
-
-1. Preserve the original functionality.
-2. Improve readability.
-3. Improve performance where appropriate.
-4. Apply modern ${language} best practices.
-5. Avoid unnecessary complexity.
-6. Return ONLY the optimized source code.
-7. Do not include markdown.
-8. Do not wrap the response in triple backticks.
-
-Code:
-
-${code}
-`.trim();
-
-
-/**
- * Bug Detection Prompt
- */
-// export const buildBugDetectionPrompt = ({
-//   language,
-//   code,
-// }) => `
-// You are an experienced software debugger.
-
-// Analyze the following ${language} code.
-
-// Identify:
-
-// 1. Syntax errors
-// 2. Logic errors
-// 3. Runtime issues
-// 4. Potential edge cases
-// 5. Security concerns when applicable
-
-// For every issue provide:
-
-// - Problem
-// - Location
-// - Explanation
-// - Suggested Fix
-
-// Then provide corrected code.
-
-// Code:
-
-// ${code}
-// `.trim();
-
-
-/**
- * Documentation Prompt
- */
-export const buildDocumentationPrompt = ({
-  language,
-  code,
-}) => `
-You are an expert technical writer and software engineer.
-
-Generate professional documentation for the following ${language}
-code.
-
-Include:
-
-# Overview
-
-# Functions
-
-# Parameters
-
-# Return Values
-
-# Usage
-
-# Examples
-
-# Notes
-
-Base the documentation strictly on the provided code.
-
-Code:
-
-${code}
-`.trim();
-
-
-/**
- * Complexity Analysis Prompt
- */
-export const buildComplexityPrompt = ({
-  language,
-  code,
-}) => `
-You are an expert algorithms engineer.
-
-Analyze the following ${language} code.
-
-Provide:
-
-# Time Complexity
-
-Explain the Big-O time complexity.
-
-# Space Complexity
-
-Explain the Big-O space complexity.
-
-# Performance Analysis
-
-Explain the major performance characteristics.
-
-# Optimization Suggestions
-
-Suggest practical improvements when appropriate.
-
-Do not invent behavior that is not present in the code.
-
-Code:
-
-${code}
-`.trim();
-
-
-
-/**
- * ==========================================================
- * Code Optimization Prompt
- * ==========================================================
- */
-
 export const buildCodeOptimizationPrompt = ({
   language,
   code,
@@ -375,17 +234,12 @@ Programming Language:
 ${language}
 
 Original Code:
-
 ${code}
 `.trim();
 
-
 /**
- * ==========================================================
  * Bug Detection Prompt
- * ==========================================================
  */
-
 export const buildBugDetectionPrompt = ({
   language,
   code,
@@ -487,6 +341,5 @@ Programming Language:
 ${language}
 
 Source Code:
-
 ${code}
 `.trim();

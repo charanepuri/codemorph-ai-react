@@ -22,22 +22,6 @@ function Settings() {
             <ThemeToggle />
           </div>
         </Card>
-
-        <Card>
-          <h3>Editor</h3>
-
-          <div className="setting-placeholder">
-            Monaco editor preferences will be available in Phase 3.
-          </div>
-        </Card>
-
-        <Card>
-          <h3>AI Model</h3>
-
-          <div className="setting-placeholder">
-            AI provider configuration will be added in Phase 4.
-          </div>
-        </Card>
       </div>
     </>
   );
