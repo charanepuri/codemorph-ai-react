@@ -42,21 +42,6 @@ const navigation = [
     icon: FaBug,
   },
   {
-    title: "Documentation",
-    path: "/documentation",
-    icon: FaFileAlt,
-  },
-  {
-    title: "Complexity",
-    path: "/complexity",
-    icon: FaChartLine,
-  },
-  {
-    title: "History",
-    path: "/history",
-    icon: FaHistory,
-  },
-  {
     title: "Settings",
     path: "/settings",
     icon: FaCog,

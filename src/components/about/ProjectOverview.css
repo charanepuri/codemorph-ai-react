@@ -1,0 +1,115 @@
+.project-overview {
+  margin-bottom: 2rem;
+}
+
+.project-overview__header {
+  margin-bottom: 1.5rem;
+}
+
+.project-overview__label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.project-overview__title {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 750;
+  line-height: 1.2;
+}
+
+.project-overview__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.project-overview__card {
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  background: var(--card-background);
+  box-shadow: var(--card-shadow);
+}
+
+.project-overview__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.25rem;
+  border-radius: 12px;
+  background: var(--secondary-background);
+  font-size: 1.35rem;
+}
+
+.project-overview__card h3 {
+  margin: 0 0 0.75rem;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.project-overview__card p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.project-overview__features {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-overview__features li {
+  position: relative;
+  padding-left: 1.25rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.project-overview__features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .project-overview__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-overview__card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-overview {
+    margin-bottom: 1.5rem;
+  }
+
+  .project-overview__card {
+    padding: 1.25rem;
+    border-radius: 15px;
+  }
+
+  .project-overview__features {
+    grid-template-columns: 1fr;
+  }
+}
