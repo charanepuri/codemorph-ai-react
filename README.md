@@ -10,9 +10,7 @@ The application provides dedicated tools for **code conversion, code explanation
 
 ## 🚀 Live Demo
 
-**Live Application:** Coming Soon
-
-> Deployment to Vercel is planned as part of the project's final deployment phase.
+**Live Application:**https://codemorph-ai-react.vercel.app/
 
 ---
 
@@ -419,7 +417,7 @@ The project `.gitignore` protects environment files:
 ## 1. Clone the Repository
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/charanepuri/codemorph-ai-react
 ```
 
 ## 2. Navigate to the Project
@@ -513,23 +511,23 @@ Before deployment, verify the following.
 
 # 📊 Project Development Phases
 
-| Phase    | Description                | Status         |
-| -------- | -------------------------- | -------------- |
-| Phase 1  | Project Setup & Foundation | ✅ Completed   |
-| Phase 2  | Routing & Layout           | ✅ Completed   |
-| Phase 3  | Core UI Components         | ✅ Completed   |
-| Phase 4  | Gemini AI Integration      | ✅ Completed   |
-| Phase 5  | AI Code Converter          | ✅ Completed   |
-| Phase 6  | AI Code Explainer          | ✅ Completed   |
-| Phase 7  | AI Code Optimizer          | ✅ Completed   |
-| Phase 8  | AI Bug Detector            | ✅ Completed   |
-| Phase 9  | About / Contact            | ✅ Completed   |
-| Phase 10 | Application Optimization   | ✅ Completed   |
-| Phase 11 | Testing & Bug Fixing       | ✅ Completed   |
-| Phase 12 | Production Preparation     | ✅ Completed   |
-| Phase 13 | Vercel Deployment          | 🔄 In Progress |
-| Phase 14 | GitHub Documentation       | ⏳ Upcoming    |
-| Phase 15 | Final Project Showcase     | ⏳ Upcoming    |
+| Phase    | Description                | Status       |
+| -------- | -------------------------- | ------------ |
+| Phase 1  | Project Setup & Foundation | ✅ Completed |
+| Phase 2  | Routing & Layout           | ✅ Completed |
+| Phase 3  | Core UI Components         | ✅ Completed |
+| Phase 4  | Gemini AI Integration      | ✅ Completed |
+| Phase 5  | AI Code Converter          | ✅ Completed |
+| Phase 6  | AI Code Explainer          | ✅ Completed |
+| Phase 7  | AI Code Optimizer          | ✅ Completed |
+| Phase 8  | AI Bug Detector            | ✅ Completed |
+| Phase 9  | About / Contact            | ✅ Completed |
+| Phase 10 | Application Optimization   | ✅ Completed |
+| Phase 11 | Testing & Bug Fixing       | ✅ Completed |
+| Phase 12 | Production Preparation     | ✅ Completed |
+| Phase 13 | Vercel Deployment          | ✅ Completed |
+| Phase 14 | GitHub Documentation       | ✅ Completed |
+| Phase 15 | Final Project Showcase     | ✅ Completed |
 
 ---
 
@@ -608,17 +606,7 @@ Special thanks to the technologies and libraries used to build CodeMorph AI:
 
 **Status:** Production Ready
 
-**Current Phase:** Phase 13 — Vercel Deployment
-
-CodeMorph AI has completed:
-
-- ✅ Core development
-- ✅ AI feature implementation
-- ✅ Application optimization
-- ✅ Testing and bug fixing
-- ✅ Production preparation
-
-The next step is deploying the application to **Vercel**.
+**Current Phase:** Project Completed
 
 ---
 
