@@ -50,7 +50,7 @@ function ProjectInformation() {
 
             <a
               className="project-information__live-link"
-              href="https://codemorph-ai.vercel.app"
+              href="https://codemorph-ai-react.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
             >

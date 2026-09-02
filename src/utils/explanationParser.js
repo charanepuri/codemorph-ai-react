@@ -24,26 +24,45 @@ function normalizeContent(content = "") {
 }
 
 /**
- * Find a section heading.
- *
- * Supports:
- *
- * # Heading
- * ## Heading
- * ### Heading
+ * Normalize a heading for comparison.
  */
-function findHeading(content, heading) {
-  const escapedHeading = heading.replace(
-    /[.*+?^${}()|[\]\\]/g,
-    "\\$&"
-  );
+function normalizeHeading(heading = "") {
+  return heading
+    .replace(/^#{1,6}\s*/, "")
+    .replace(/\*\*/g, "")
+    .replace(/[`*_]/g, "")
+    .replace(/:$/, "")
+    .trim()
+    .toLowerCase();
+}
 
-  const pattern = new RegExp(
-    `^#{1,3}\\s+${escapedHeading}\\s*$`,
-    "im"
+/**
+ * Check whether a line matches a section heading.
+ */
+function isSectionHeading(line, heading) {
+  return (
+    normalizeHeading(line) ===
+    normalizeHeading(heading)
   );
+}
 
-  return pattern.exec(content);
+/**
+ * Find the starting line of a section.
+ */
+function findHeadingLine(lines, heading) {
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index].trim();
+
+    if (!line) {
+      continue;
+    }
+
+    if (isSectionHeading(line, heading)) {
+      return index;
+    }
+  }
+
+  return -1;
 }
 
 /**
@@ -57,50 +76,50 @@ export function extractExplanationSection(
     return "";
   }
 
-  const heading =
-    SECTION_HEADINGS[section];
+  const heading = SECTION_HEADINGS[section];
 
   if (!heading) {
     return "";
   }
 
   const normalized = normalizeContent(content);
+  const lines = normalized.split("\n");
 
-  const match = findHeading(
-    normalized,
+  const startLine = findHeadingLine(
+    lines,
     heading
   );
 
-  if (!match || match.index === undefined) {
+  if (startLine === -1) {
     return "";
   }
 
-  const startIndex =
-    match.index + match[0].length;
+  const sectionLines = [];
 
-  const remaining =
-    normalized.slice(startIndex);
+  for (
+    let index = startLine + 1;
+    index < lines.length;
+    index += 1
+  ) {
+    const currentLine = lines[index].trim();
 
-  /**
-   * Find the next top-level section.
-   *
-   * We intentionally look for # headings,
-   * rather than ### headings, because
-   * line-by-line explanations may contain
-   * ### Line 1, ### Line 2, etc.
-   */
-  const nextSectionMatch =
-    remaining.match(
-      /\n#{1,2}\s+[^\n]+/
-    );
+    const isAnotherSection =
+      Object.values(SECTION_HEADINGS).some(
+        (sectionHeading) =>
+          isSectionHeading(
+            currentLine,
+            sectionHeading
+          )
+      );
 
-  if (!nextSectionMatch) {
-    return remaining.trim();
+    if (isAnotherSection) {
+      break;
+    }
+
+    sectionLines.push(lines[index]);
   }
 
-  return remaining
-    .slice(0, nextSectionMatch.index)
-    .trim();
+  return sectionLines.join("\n").trim();
 }
 
 /**
@@ -151,13 +170,13 @@ export function validateExplanationResponse(
     sections
   )
     .filter(([, value]) => !value)
-    .map(([key]) => SECTION_HEADINGS[key]);
+    .map(
+      ([key]) => SECTION_HEADINGS[key]
+    );
 
   return {
     valid: missingSections.length === 0,
-
     sections,
-
     missingSections,
   };
 }

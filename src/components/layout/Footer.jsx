@@ -59,7 +59,7 @@ function Footer() {
             <h3>Project</h3>
 
             <a
-              href="https://github.com/charanepuri"
+              href="https://github.com/charanepuri/codemorph-ai-react"
               target="_blank"
               rel="noopener noreferrer"
             >

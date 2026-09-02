@@ -1,7 +1,7 @@
 const aiConfig = {
   apiKey: import.meta.env.VITE_GEMINI_API_KEY,
 
-  model: "gemini-2.5-flash",
+  model: "gemini-3.6-flash",
 
   generationConfig: {
     temperature: 0.2,
@@ -30,9 +30,7 @@ const aiConfig = {
   ],
 
   timeout: 30000,
-
   maxRetries: 3,
-
   retryDelay: 1000,
 };
 
