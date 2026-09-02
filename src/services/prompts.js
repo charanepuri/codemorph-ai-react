@@ -168,35 +168,35 @@ ${code}
 /**
  * Bug Detection Prompt
  */
-export const buildBugDetectionPrompt = ({
-  language,
-  code,
-}) => `
-You are an experienced software debugger.
+// export const buildBugDetectionPrompt = ({
+//   language,
+//   code,
+// }) => `
+// You are an experienced software debugger.
 
-Analyze the following ${language} code.
+// Analyze the following ${language} code.
 
-Identify:
+// Identify:
 
-1. Syntax errors
-2. Logic errors
-3. Runtime issues
-4. Potential edge cases
-5. Security concerns when applicable
+// 1. Syntax errors
+// 2. Logic errors
+// 3. Runtime issues
+// 4. Potential edge cases
+// 5. Security concerns when applicable
 
-For every issue provide:
+// For every issue provide:
 
-- Problem
-- Location
-- Explanation
-- Suggested Fix
+// - Problem
+// - Location
+// - Explanation
+// - Suggested Fix
 
-Then provide corrected code.
+// Then provide corrected code.
 
-Code:
+// Code:
 
-${code}
-`.trim();
+// ${code}
+// `.trim();
 
 
 /**
@@ -375,6 +375,118 @@ Programming Language:
 ${language}
 
 Original Code:
+
+${code}
+`.trim();
+
+
+/**
+ * ==========================================================
+ * Bug Detection Prompt
+ * ==========================================================
+ */
+
+export const buildBugDetectionPrompt = ({
+  language,
+  code,
+}) => `
+You are a senior software engineer and expert debugger.
+
+Analyze the following ${language} code for programming issues.
+
+Your job is to identify real problems based strictly on the
+provided source code.
+
+Check for:
+
+- Syntax errors
+- Logic errors
+- Runtime errors
+- Undefined variables
+- Incorrect function usage
+- Type-related problems
+- Null or undefined handling
+- Incorrect control flow
+- Potential edge cases
+- Security problems when applicable
+- Performance-related bugs when applicable
+
+For every detected issue, determine:
+
+- Severity
+- Line number
+- Issue title
+- Issue type
+- Explanation
+- Suggested fix
+
+Severity must be exactly one of:
+
+"critical"
+"high"
+"medium"
+"low"
+
+Issue type must be one of:
+
+"syntax"
+"logic"
+"runtime"
+"type"
+"security"
+"performance"
+"edge-case"
+"other"
+
+Return ONLY valid JSON.
+
+Do not use Markdown.
+
+Do not use triple backticks.
+
+Use exactly this JSON structure:
+
+{
+  "summary": {
+    "total": 0,
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "bugs": [
+    {
+      "id": "bug-1",
+      "severity": "high",
+      "line": 1,
+      "type": "logic",
+      "title": "Short issue title",
+      "description": "Explain the problem clearly.",
+      "fix": "Explain how to fix the problem."
+    }
+  ],
+  "correctedCode": "complete corrected source code"
+}
+
+IMPORTANT RULES:
+
+1. If there are no bugs, return an empty bugs array.
+2. If there are no bugs, all summary counts must be zero.
+3. correctedCode must contain the complete code.
+4. Preserve the original functionality when fixing bugs.
+5. Do not invent bugs.
+6. Do not report stylistic preferences as bugs.
+7. Do not change working code unnecessarily.
+8. Line numbers must correspond to the provided source code.
+9. Do not omit important source code from correctedCode.
+10. If a security issue exists, explain why it is a security concern.
+11. If something cannot be determined from the code, do not assume it is a bug.
+12. Return valid JSON that can be parsed with JSON.parse().
+
+Programming Language:
+${language}
+
+Source Code:
 
 ${code}
 `.trim();

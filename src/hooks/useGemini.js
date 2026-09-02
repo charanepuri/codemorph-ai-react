@@ -6,30 +6,29 @@ import {
   buildCodeConversionPrompt,
   buildCodeExplanationPrompt,
   buildCodeOptimizationPrompt,
+  buildBugDetectionPrompt,
 } from "../services/prompts";
 
 function useGemini() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] =
+    useState(false);
 
-  const [error, setError] = useState("");
+  const [error, setError] =
+    useState("");
 
-  const [response, setResponse] = useState("");
+  const [response, setResponse] =
+    useState("");
 
-  /**
-   * Reset AI state
-   */
   function reset() {
     setLoading(false);
     setError("");
     setResponse("");
   }
 
-  /**
-   * Generic AI request
-   */
   async function generate(prompt) {
     if (!prompt?.trim()) {
-      const message = "AI prompt cannot be empty.";
+      const message =
+        "AI prompt cannot be empty.";
 
       setError(message);
 
@@ -59,47 +58,53 @@ function useGemini() {
     }
   }
 
-  /**
-   * Convert source code
-   */
   async function convertCode({
     sourceLanguage,
     targetLanguage,
     code,
   }) {
-    const prompt = buildCodeConversionPrompt({
-      sourceLanguage,
-      targetLanguage,
-      code,
-    });
+    const prompt =
+      buildCodeConversionPrompt({
+        sourceLanguage,
+        targetLanguage,
+        code,
+      });
 
     return generate(prompt);
   }
 
-  /**
-   * Explain source code
-   */
   async function explainCode({
     language,
     code,
   }) {
-    const prompt = buildCodeExplanationPrompt({
-      language,
-      code,
-    });
+    const prompt =
+      buildCodeExplanationPrompt({
+        language,
+        code,
+      });
 
     return generate(prompt);
   }
 
-  /**
-   * Optimize source code
-   */
   async function optimizeCode({
     language,
     code,
   }) {
     const prompt =
       buildCodeOptimizationPrompt({
+        language,
+        code,
+      });
+
+    return generate(prompt);
+  }
+
+  async function detectBugs({
+    language,
+    code,
+  }) {
+    const prompt =
+      buildBugDetectionPrompt({
         language,
         code,
       });
@@ -121,6 +126,8 @@ function useGemini() {
     explainCode,
 
     optimizeCode,
+
+    detectBugs,
   };
 }
 
