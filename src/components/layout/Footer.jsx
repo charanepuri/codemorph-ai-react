@@ -67,7 +67,7 @@ function Footer() {
               <span>GitHub Repository</span>
             </a>
 
-            <a href="/documentation">
+            <a href="CodeMorph_AI_Project_Documentation.pdf" target="_blank" rel="noopener noreferrer">
               <FiBookOpen aria-hidden="true" />
               <span>Documentation</span>
             </a>
